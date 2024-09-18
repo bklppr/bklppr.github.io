@@ -1,8 +1,9 @@
 AUTHOR = 'Benjamin Klepper'
 SITENAME = 'Data & Tech Notes'
-SITEURL = ""
+# SITEURL = 'http://127.0.0.1:8000'  # local development
+SITEURL = 'https://bklppr.github.io'
 
-PATH = "content"
+PATH = 'content'
 
 TIMEZONE = 'Europe/Rome'
 DEFAULT_LANG = 'en'
@@ -29,19 +30,19 @@ THEME = 'pelican-chunk'  # Make sure this theme is installed and properly config
 
 # Set the paths for static pages and articles
 PAGE_PATHS = ['pages']
-ARTICLE_PATHS = ['articles']
+POSTS_PATHS = ['posts']
 
 # URL settings for pages and articles
-PAGE_URL = '{slug}.html'
-PAGE_SAVE_AS = '{slug}.html'
+PAGE_URL = 'pages/{slug}.html'
+PAGE_SAVE_AS = 'pages/{slug}.html'
 
-ARTICLE_URL = 'articles/{slug}.html'
-ARTICLE_SAVE_AS = 'articles/{slug}.html'
+POST_URL = 'posts/{slug}.html'
+POST_SAVE_AS = 'posts/{slug}.html'
 
 # Add custom menu items for the top navigation bar
 MENUITEMS = (
-    ('About Me', '/about-me.html'),  # Link to the "About Me" page
-    ('Articles', '/index.html'),  # Link to the articles page
+    ('About', '/pages/about.html'),
+    ('Posts', '/index.html'),
 )
 
 USE_FOLDER_AS_CATEGORY = False  # Disable using folders as categories
