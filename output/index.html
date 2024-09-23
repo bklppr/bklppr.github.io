@@ -1,79 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-		<title>Data & Tech Notes</title>
-		<meta charset="utf-8" />
-		<link rel="profile" href="http://gmpg.org/xfn/11" />
-		<link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/css/style.css" />
-		<link rel='stylesheet' id='oswald-css'  href='http://fonts.googleapis.com/css?family=Oswald&#038;ver=3.3.2' type='text/css' media='all' />
-		<style type="text/css">
-			body.custom-background { background-color: #f5f5f5; }
-		</style>
-		<link rel="alternate" type="application/atom+xml"
-			title="Data & Tech Notes — Flux Atom"
-			href="http://127.0.0.1:8000/" /> 
-		<!--[if lte IE 8]><script src="http://127.0.0.1:8000/theme/js/html5shiv.js"></script><![endif]-->
+      <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>Data & Tech Notes</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+  <link href="./" rel="canonical" />
+
+  <!-- Feed -->
+
+  <link href="./theme/css/style.css" type="text/css" rel="stylesheet" />
+
+
+  <!-- Custom fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+    var siteUrl = '.';
+  </script>
+
+  <script>
+    var localTheme = localStorage.getItem('attila_theme');
+    switch (localTheme) {
+      case 'dark':
+        document.documentElement.classList.add('theme-dark');
+        break;
+      case 'light':
+        document.documentElement.classList.add('theme-light');
+        break;
+      default:
+        break;
+    }
+  </script>
+
+
+
+
+
+
+
+
+<!-- Open Graph -->
+<meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="Data & Tech Notes"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="blog"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Data & Tech Notes"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="View the blog."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="./"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="./theme/images/home-bg.jpg">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Website",
+  "name": " Data & Tech Notes ",
+  "url" : "./",
+  "image": "./theme/images/home-bg.jpg",
+  "description": "View the blog."
+}
+</script>
 </head>
 
-<body class="home blog custom-background " >
-	<div id="container">
-		<div id="header">
-				<h1 id="site-title"><a href="http://127.0.0.1:8000">Data & Tech Notes</a></h1>
-		</div><!-- /#banner -->
-		
-		<div id="menu">
-			<div class="menu-navigation-container">
-				<ul id="menu-navigation" class="menu">
-						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/pages/about.html">About</a></li>
-						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/index.html">Posts</a></li>
 
-				</ul>
-			</div> <!--/#menu-navigation-container-->
-		</div><!-- /#menu -->
-		
-		<div class="page-title">
-		</div>
-	
-		<div id="contents">
-<div class="post type-post status-publish format-standard hentry category-general" id="post">
-	<div class="entry-meta">
-		<div class="date"><a href="http://127.0.0.1:8000/acid-transactions.html">Wed 18 September 2024</a></div>
-		<span class="byline">By <a href="http://127.0.0.1:8000/author/benjamin-klepper.html">Benjamin Klepper</a></span>
-	</div> <!-- /#entry-meta -->
-	<div class="main">
-		<h2 class="entry-title">
-			<a href="http://127.0.0.1:8000/acid-transactions.html" title="Permalink to ACID Transactions in Databases" rel="bookmark">ACID Transactions in Databases</a>
-		</h2>
-		<div class="entry-content">
-			<p>ACID (Atomicity, Consistency, Isolation, Durability) defines properties essential for reliable database transactions.</p>
-<ol>
-<li>
-<p><strong>Atomicity</strong>: A transaction is all-or-nothing. If any part fails, the entire transaction is rolled back.<br>
-<em>Example</em>: When updating both a customer's address and billing information, either both changes are saved successfully, or none if one fails.</p>
-</li>
-<li>
-<p><strong>Consistency</strong>: Transactions move the database from one valid state to another, maintaining all rules and constraints.<br>
-<em>Example</em>: A transaction that updates an insurance claim must ensure it adheres to the insurance policy’s terms (e.g., limits and deductibles); otherwise, it is rejected.</p>
-</li>
-<li>
-<p><strong>Isolation</strong>: Transactions are executed independently, without intermediate states affecting others.<br>
-<em>Example</em>: Two insurance underwriters calculating risk on the same policy will not see each other’s incomplete updates during the process.</p>
-</li>
-<li>
-<p><strong>Durability</strong>: Once committed, a transaction is permanent, even in case of system failure.<br>
-<em>Example</em>: Once an insurance claim approval is finalized, it remains in the system.</p>
-</li>
-</ol>
-		</div> <!--/#entry-content-->
-    		<span class="tag-links"><strong>Tagged</strong>
- <a href="http://127.0.0.1:8000/tag/data-integrity.html" rel="tag">Data Integrity</a>    		</span>
-	</div> <!--/#main-->
-</div>  <!--/#post-->		</div>
-		
-		<div id="footer">
-			<p>Powered by <a href="http://getpelican.com">Pelican</a>, theme by <a href="http://bunnyman.info">tBunnyMan</a>.</p>
-		</div><!-- /#footer -->
-	</div><!-- /#container -->
-	<div style="display:none"></div>
+
+
+
+
+
+
+
+<body class="home-template">
+
+<div class="nav-header">
+  <nav class="nav-wrapper" aria-label="Main">
+<ul>
+
+    <li class="nav-Posts " role="presentation"><a href="/index.html"><span>Posts</span></a></li>
+
+      <li role="presentation"><a href="./pages/about.html"><span>About</span></a></li>
+</ul>
+<ul class="nav-meta">
+  <li class="nav-search" style="display: none;">
+    <a title="Search">
+      <i class="icon icon-search" aria-hidden="true"></i>
+      <span>Search</span>
+    </a>
+  </li>
+</ul>  </nav>
+
+  <div class="nav-wrapper-control">
+    <div class="inner">
+      <a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>Menu</a>
+      <a class="nav-search" title="Search" role="button" style="display: none;"><i class="icon icon-search" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</div>
+<div class="nav-close" role="button" aria-label="Close"></div>
+  <section id="wrapper" class="page-wrapper">
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="blog-header ">
+      <div class="inner">
+        <div class="box blog-box">
+          <h1 class="blog-name">Data & Tech Notes</h1>
+        </div>
+
+      </div>
+    </header>
+
+
+<div id="index" class="container">
+  <main class="content" role="main">
+    <div class="extra-pagination">
+<nav class="pagination" aria-label="Pagination" role="pagination">
+  <div class="inner">
+    <div class="box pagination-box">
+      <span class="pagination-info">Page 1 of 3</span>
+      <a title="Older Posts" class="pagination-prev" href="./index2.html"><span class="pagination-label">Older Posts</span> <i class="icon icon-arrow-right"></i></a>
+    </div>
+  </div>
+</nav>
+    </div>
+
+
+
+    <article class="post">
+        <div class="inner">
+            <div class="box post-box">
+                <h2 class="post-title"><a href="./schema-on-read-vs-schema-on-write.html" rel="bookmark" title="Permalink to Schema-on-Read vs. Schema-on-Write">Schema-on-Read vs. Schema-on-Write</a>
+                </h2>
+                <span class="post-meta">
+                    By 
+                        <a class="post-meta-tag" href="./author/.html"></a>
+                     in 
+                    <a class="post-meta-tag" href="./category/general.html">General</a>
+                      on <time datetime="Sat 21 September 2024">Sat 21 September 2024</time>
+                </span>
+                <p class="post-excerpt">
+                        What is Schema-on-Read? Schema-on-Read refers to a data management approach where the schema (or structure) of the data is applied when it is read or queried, not when it is written to storage. This is the approach used in data lakes and similar...
+                </p>
+
+                <div class="post-excerpt">
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+
+    <article class="post">
+        <div class="inner">
+            <div class="box post-box">
+                <h2 class="post-title"><a href="./lakehouse-architecture.html" rel="bookmark" title="Permalink to Lakehouse - The Lakehouse Architecture">Lakehouse - The Lakehouse Architecture</a>
+                </h2>
+                <span class="post-meta">
+                    By 
+                        <a class="post-meta-tag" href="./author/.html"></a>
+                     in 
+                    <a class="post-meta-tag" href="./category/general.html">General</a>
+                      on <time datetime="Fri 20 September 2024">Fri 20 September 2024</time>
+                </span>
+                <p class="post-excerpt">
+                        Summary of section 3 of the paper. The Lakehouse architecture combines the benefits of data lakes (low-cost storage, open file formats) with the management and performance features of data warehouses (ACID transactions, data versioning, indexing,...
+                </p>
+
+                <div class="post-excerpt">
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+
+    <article class="post">
+        <div class="inner">
+            <div class="box post-box">
+                <h2 class="post-title"><a href="./lakehouse-motivation.html" rel="bookmark" title="Permalink to Lakehouse - Motivation: Data Warehousing Challenges">Lakehouse - Motivation: Data Warehousing Challenges</a>
+                </h2>
+                <span class="post-meta">
+                    By 
+                        <a class="post-meta-tag" href="./author/.html"></a>
+                     in 
+                    <a class="post-meta-tag" href="./category/general.html">General</a>
+                      on <time datetime="Thu 19 September 2024">Thu 19 September 2024</time>
+                </span>
+                <p class="post-excerpt">
+                        Summary of section 2 of the paper. While data warehouses are critical to many business processes, they pose challenges with data quality issues, staleness, and high costs. These challenges, in part, stem from the "accidental complexity"...
+                </p>
+
+                <div class="post-excerpt">
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+
+    <article class="post">
+        <div class="inner">
+            <div class="box post-box">
+                <h2 class="post-title"><a href="./lakehouse-introduction.html" rel="bookmark" title="Permalink to Lakehouse - Introduction">Lakehouse - Introduction</a>
+                </h2>
+                <span class="post-meta">
+                    By 
+                        <a class="post-meta-tag" href="./author/.html"></a>
+                     in 
+                    <a class="post-meta-tag" href="./category/general.html">General</a>
+                      on <time datetime="Wed 18 September 2024">Wed 18 September 2024</time>
+                </span>
+                <p class="post-excerpt">
+                        Summary of section 1 of the paper. The traditional data warehouse architecture is expected to be replaced by a new pattern called the Lakehouse, which combines the benefits of data lakes and data warehouses. A Lakehouse is characterized by: Open...
+                </p>
+
+                <div class="post-excerpt">
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+
+    <article class="post">
+        <div class="inner">
+            <div class="box post-box">
+                <h2 class="post-title"><a href="./delta-lake-use-cases.html" rel="bookmark" title="Permalink to Delta Lake - Use Cases">Delta Lake - Use Cases</a>
+                </h2>
+                <span class="post-meta">
+                    By 
+                        <a class="post-meta-tag" href="./author/.html"></a>
+                     in 
+                    <a class="post-meta-tag" href="./category/general.html">General</a>
+                      on <time datetime="Tue 17 September 2024">Tue 17 September 2024</time>
+                </span>
+                <p class="post-excerpt">
+                        Summary of section 5 of the paper. Delta Lake use cases span diverse data types, including Change Data Capture (CDC) logs from OLTP systems, application logs, time series data, graphs, aggregate tables, and even image or feature data for machine...
+                </p>
+
+                <div class="post-excerpt">
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+
+    <article class="post">
+        <div class="inner">
+            <div class="box post-box">
+                <h2 class="post-title"><a href="./delta-lake-higher-level-features.html" rel="bookmark" title="Permalink to Delta Lake: Higher-Level Features">Delta Lake: Higher-Level Features</a>
+                </h2>
+                <span class="post-meta">
+                    By 
+                        <a class="post-meta-tag" href="./author/.html"></a>
+                     in 
+                    <a class="post-meta-tag" href="./category/general.html">General</a>
+                      on <time datetime="Mon 16 September 2024">Mon 16 September 2024</time>
+                </span>
+                <p class="post-excerpt">
+                        Summary of section 4 of the paper. Delta Lake’s transactional design enables a range of high-level features similar to traditional analytical databases. In this post, we look at some of the most widely used features. Time Travel and Rollbacks...
+                </p>
+
+                <div class="post-excerpt">
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+
+    <article class="post">
+        <div class="inner">
+            <div class="box post-box">
+                <h2 class="post-title"><a href="./delta-lake-storage-format-and-access-protocols.html" rel="bookmark" title="Permalink to Delta Lake - Storage Format and Access Protocols">Delta Lake - Storage Format and Access Protocols</a>
+                </h2>
+                <span class="post-meta">
+                    By 
+                        <a class="post-meta-tag" href="./author/.html"></a>
+                     in 
+                    <a class="post-meta-tag" href="./category/general.html">General</a>
+                      on <time datetime="Sun 15 September 2024">Sun 15 September 2024</time>
+                </span>
+                <p class="post-excerpt">
+                        Summary of section 3 of the paper. Delta Lake uses a directory on a cloud object store or file system to manage table contents and maintain a log of transaction operations. This ensures data consistency and atomicity using optimistic concurrency...
+                </p>
+
+                <div class="post-excerpt">
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+
+    <article class="post">
+        <div class="inner">
+            <div class="box post-box">
+                <h2 class="post-title"><a href="./delta-lake-motivation-characteristics-object-stores.html" rel="bookmark" title="Permalink to Delta Lake - Motivation: Characteristics and Challenges of Object Stores">Delta Lake - Motivation: Characteristics and Challenges of Object Stores</a>
+                </h2>
+                <span class="post-meta">
+                    By 
+                        <a class="post-meta-tag" href="./author/.html"></a>
+                     in 
+                    <a class="post-meta-tag" href="./category/general.html">General</a>
+                      on <time datetime="Sat 14 September 2024">Sat 14 September 2024</time>
+                </span>
+                <p class="post-excerpt">
+                        Summary of section 2 of the paper. In this post, we look at the API and performance characteristics of cloud object stores and explain the challenges of building efficient table storage on them. Object Store APIs Cloud object stores, such as...
+                </p>
+
+                <div class="post-excerpt">
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+
+    <article class="post">
+        <div class="inner">
+            <div class="box post-box">
+                <h2 class="post-title"><a href="./delta-lake-introduction.html" rel="bookmark" title="Permalink to Delta Lake - Introduction">Delta Lake - Introduction</a>
+                </h2>
+                <span class="post-meta">
+                    By 
+                        <a class="post-meta-tag" href="./author/.html"></a>
+                     in 
+                    <a class="post-meta-tag" href="./category/general.html">General</a>
+                      on <time datetime="Fri 13 September 2024">Fri 13 September 2024</time>
+                </span>
+                <p class="post-excerpt">
+                        Summary of section 1 of the paper. Cloud object stores like Amazon S3 and Azure Blob Storage are widely used due to their scalability and pay-as-you-go model, making them ideal for managing large datasets in data warehouses and data lakes. Many...
+                </p>
+
+                <div class="post-excerpt">
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+
+    <article class="post">
+        <div class="inner">
+            <div class="box post-box">
+                <h2 class="post-title"><a href="./write-ahead-transaction-logs.html" rel="bookmark" title="Permalink to Write-Ahead Transaction Logs">Write-Ahead Transaction Logs</a>
+                </h2>
+                <span class="post-meta">
+                    By 
+                        <a class="post-meta-tag" href="./author/.html"></a>
+                     in 
+                    <a class="post-meta-tag" href="./category/general.html">General</a>
+                      on <time datetime="Thu 12 September 2024">Thu 12 September 2024</time>
+                </span>
+                <p class="post-excerpt">
+                        Write-ahead transaction logs (WAL) record every change before the actual data is updated, ensuring ACID compliance (Atomicity, Consistency, Isolation, Durability). How Write-Ahead Logs Work: WAL systems write changes to a separate log before...
+                </p>
+
+                <div class="post-excerpt">
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+<nav class="pagination" aria-label="Pagination" role="pagination">
+  <div class="inner">
+    <div class="box pagination-box">
+      <span class="pagination-info">Page 1 of 3</span>
+      <a title="Older Posts" class="pagination-prev" href="./index2.html"><span class="pagination-label">Older Posts</span> <i class="icon icon-arrow-right"></i></a>
+    </div>
+  </div>
+</nav>
+  </main>
+</div>
+    <div class="nav-footer">
+      <nav class="nav-wrapper" aria-label="Footer">
+        <span class="nav-copy">Data & Tech Notes &copy; 2023
+        </span>
+        <span class="nav-credits">
+
+
+
+          Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a> &bull; Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a> &bull;
+          <a class="menu-item js-theme" href="#" data-system="System theme" data-dark="Dark theme" data-light="Light theme">
+            <span class="theme-icon"></span><span class="theme-text">System theme</span>
+          </a>
+        </span>
+      </nav>
+    </div>
+
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script type="text/javascript" src="./theme/js/jquery.fitvids.js"></script>
+  <script type="text/javascript" src="./theme/js/script.js"></script>
+
+
+  <!-- 	The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in article.html, but it needs to be included down here, after jQuery has already loaded. -->
 </body>
+
 </html>

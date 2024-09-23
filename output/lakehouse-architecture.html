@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>Lakehouse - The Lakehouse Architecture</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="./lakehouse-architecture.html" rel="canonical" />
+  <!-- Feed -->
+
+  <link href="./theme/css/style.css" type="text/css" rel="stylesheet" />
+
+
+  <!-- Custom fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+    var siteUrl = '.';
+  </script>
+
+  <script>
+    var localTheme = localStorage.getItem('attila_theme');
+    switch (localTheme) {
+      case 'dark':
+        document.documentElement.classList.add('theme-dark');
+        break;
+      case 'light':
+        document.documentElement.classList.add('theme-light');
+        break;
+      default:
+        break;
+    }
+  </script>
+
+
+
+
+
+
+
+    <meta name="description" content="Summary of section 3 of the paper. The Lakehouse architecture combines the benefits of data lakes (low-cost storage, open file formats)...">
+
+    <meta name="author" content="">
+
+    <meta name="tags" content="Lakehouse">
+    <meta name="tags" content="Data Architecture">
+    <meta name="tags" content="Data Lakes">
+    <meta name="tags" content="Data Warehousing">
+
+
+
+
+<!-- Open Graph -->
+<meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="Data & Tech Notes"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Lakehouse - The Lakehouse Architecture"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="Summary of section 3 of the paper. The Lakehouse architecture combines the benefits of data lakes (low-cost storage, open file formats)..."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="./lakehouse-architecture.html"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2024-09-20 00:00:00+02:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content=""/>
+<meta prefix="og: http://ogp.me/ns#" property="article:author" content="./author/.html">
+<meta prefix="og: http://ogp.me/ns#" property="article:section" content="General"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Lakehouse"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Data Architecture"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Data Lakes"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Data Warehousing"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="./theme/images/home-bg.jpg">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "Lakehouse - The Lakehouse Architecture",
+  "headline": "Lakehouse - The Lakehouse Architecture",
+  "datePublished": "2024-09-20 00:00:00+02:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "",
+    "url": "./author/.html"
+  },
+  "image": "./theme/images/post-bg.jpg",
+  "url": "./lakehouse-architecture.html",
+  "description": "Summary of section 3 of the paper. The Lakehouse architecture combines the benefits of data lakes (low-cost storage, open file formats)..."
+}
+</script>
+</head>
+
+
+
+
+
+
+
+
+
+<body class="category-template">
+
+<div class="nav-header">
+  <nav class="nav-wrapper" aria-label="Main">
+<ul>
+
+    <li class="nav-Posts " role="presentation"><a href="/index.html"><span>Posts</span></a></li>
+
+      <li role="presentation"><a href="./pages/about.html"><span>About</span></a></li>
+</ul>
+<ul class="nav-meta">
+  <li class="nav-search" style="display: none;">
+    <a title="Search">
+      <i class="icon icon-search" aria-hidden="true"></i>
+      <span>Search</span>
+    </a>
+  </li>
+</ul>  </nav>
+
+  <div class="nav-wrapper-control">
+    <div class="inner">
+      <a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>Menu</a>
+      <a class="nav-search" title="Search" role="button" style="display: none;"><i class="icon icon-search" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</div>
+<div class="nav-close" role="button" aria-label="Close"></div>
+  <section id="wrapper" class="page-wrapper">
+    <!-- Progressbar -->
+    <div class="progress-container">
+      <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="post-header ">
+      <div class="inner">
+        <span class="post-info">
+          <span class="post-type">Article</span>
+          <span class="post-count">General</span>
+        </span>
+        <h1 class="post-title">Lakehouse - The Lakehouse Architecture</h1>
+        <div class="post-meta">
+          <div class="post-meta-avatars">
+
+
+            <figure class="post-meta-avatar avatar">
+              <a class="author-avatar" href="./author/.html">
+                <img class="author-profile-image" src="" alt="" />
+              </a>
+            </figure>
+          </div>
+
+          <h4 class="post-meta-author">
+            
+          </h4>
+          <time datetime="Fri 20 September 2024">Fri 20 September 2024</time>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+          <section class="post-content">
+            <p><em>Summary of section 3 of the <a href="https://www.cidrdb.org/cidr2021/papers/cidr2021_paper17.pdf">paper</a>.</em></p>
+<p>The <strong>Lakehouse architecture</strong> combines the benefits of <strong>data lakes</strong> (low-cost storage, open file formats) with the management and performance features of <strong>data warehouses</strong> (ACID transactions, data versioning, indexing, etc.). The key challenge is integrating these benefits without sacrificing separation of storage and compute.</p>
+<hr>
+<h3>Implementing a Lakehouse System</h3>
+<ul>
+<li>
+<p><strong>Low-Cost Storage with Metadata Layer</strong>: Data is stored in low-cost object storage (e.g., Amazon S3) in open formats (e.g., Parquet). A <strong>transactional metadata layer</strong> provides features like ACID transactions, versioning, and efficient management. Systems like <strong>Delta Lake</strong> and <strong>Apache Iceberg</strong> already use this approach.</p>
+</li>
+<li>
+<p><strong>Optimizing SQL Performance</strong>: Achieving state-of-the-art SQL performance requires additional features such as <strong>caching</strong>, <strong>indexes</strong>, and <strong>data layout optimizations</strong>. These techniques optimize query performance without changing the underlying data format.</p>
+</li>
+<li>
+<p><strong>Declarative APIs for Advanced Analytics</strong>: <strong>DataFrame APIs</strong> offer a declarative way for machine learning and data science workloads to benefit from Lakehouse optimizations. By integrating APIs like Spark SQL, users can perform data transformations and queries more efficiently.</p>
+</li>
+</ul>
+<hr>
+<h3>Metadata Layers for Data Management</h3>
+<p>The <strong>metadata layer</strong> is key to enabling advanced data management on data lakes. Systems like <strong>Delta Lake</strong> and <strong>Apache Iceberg</strong> offer ACID transactions, time travel, schema enforcement, and access control, making data lakes more reliable and easier to manage. These systems allow for fast adoption by converting existing Parquet files into managed Lakehouse tables with no data duplication.</p>
+<hr>
+<h3>SQL Performance in a Lakehouse</h3>
+<p><strong>SQL performance</strong> in a Lakehouse is improved through several techniques:</p>
+<ol>
+<li><strong>Caching</strong>: Frequently accessed data can be cached on faster devices like SSDs or RAM to speed up queries.</li>
+<li><strong>Auxiliary Data</strong>: Indexes, statistics, and other auxiliary data structures help optimize query execution, allowing data skipping and faster lookups.</li>
+<li><strong>Data Layout</strong>: Techniques like <strong>Z-ordering</strong> improve the physical organization of data, ensuring better performance for common query patterns.</li>
+</ol>
+<hr>
+<h3>Efficient Access for Advanced Analytics</h3>
+<p>Lakehouses support <strong>advanced analytics</strong> by providing efficient data access for <strong>machine learning (ML)</strong> and <strong>data science</strong> workloads. <strong>Declarative DataFrame APIs</strong> allow systems like <strong>TensorFlow</strong> and <strong>Spark MLlib</strong> to take advantage of Lakehouse features like caching and data skipping. Optimized data access layers ensure that ML workloads can process large datasets efficiently.</p>
+<hr>
+<p>The <strong>Lakehouse</strong> design offers a unified architecture that provides the performance and management benefits of data warehouses while maintaining the flexibility and low cost of data lakes. With improvements in metadata management, SQL performance, and advanced analytics integration, the Lakehouse is positioned as the next evolution in data management systems.</p>
+          </section>
+
+
+          <section class="post-footer" >
+            <div class="post-share">
+              <span class="post-info-label">Share</span>
+              <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Lakehouse - The Lakehouse Architecture&amp;url=./lakehouse-architecture.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="icon icon-twitter" aria-hidden="true"></i><span class="hidden">Twitter</span>
+              </a>
+              <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./lakehouse-architecture.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="icon icon-facebook" aria-hidden="true"></i><span class="hidden">Facebook</span>
+              </a>
+              <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=./lakehouse-architecture.html&amp;title=Lakehouse - The Lakehouse Architecture" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+                <i class="icon icon-linkedin" aria-hidden="true"></i><span class="hidden">LinkedIn</span>
+              </a>
+              <a title="Email" aria-label="Email" class="email" href="mailto:?subject=Lakehouse - The Lakehouse Architecture&amp;body=./lakehouse-architecture.html">
+                <i class="icon icon-mail" aria-hidden="true"></i><span class="hidden">Email</span>
+              </a>
+              <div class="clear"></div>
+            </div>
+
+            <aside class="post-tags">
+<a href="./tag/lakehouse.html">Lakehouse</a><a href="./tag/data-architecture.html">Data Architecture</a><a href="./tag/data-lakes.html">Data Lakes</a><a href="./tag/data-warehousing.html">Data Warehousing</a>            </aside>
+
+            <div class="clear"></div>
+
+
+          </section>
+
+
+          <aside class="post-nav">
+            <div class="clear"></div>
+          </aside>
+
+        </div>
+      </article>
+    </main>
+    <div class="nav-footer">
+      <nav class="nav-wrapper" aria-label="Footer">
+        <span class="nav-copy">Data & Tech Notes &copy; 2023
+        </span>
+        <span class="nav-credits">
+
+
+
+          Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a> &bull; Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a> &bull;
+          <a class="menu-item js-theme" href="#" data-system="System theme" data-dark="Dark theme" data-light="Light theme">
+            <span class="theme-icon"></span><span class="theme-text">System theme</span>
+          </a>
+        </span>
+      </nav>
+    </div>
+
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script type="text/javascript" src="./theme/js/jquery.fitvids.js"></script>
+  <script type="text/javascript" src="./theme/js/script.js"></script>
+
+
+  <!-- 	The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in article.html, but it needs to be included down here, after jQuery has already loaded. -->
+
+<!-- Add MathJax and FontAwesome for Asciidoc -->\
+<script>
+  $(document).ready(function () {
+    var viewport = $(window);
+    var post = $('.post-content');
+    // Responsive videos with fitVids
+    post.fitVids();
+
+    var mdSelector=".highlight pre";
+    var rstSelector=".highlight pre";
+    // For ":source-highlighter: highlight.js`" in asciidoc
+    var adocSelector="pre.highlight > code[data-lang]"
+    var selector=mdSelector;
+    // Format code blocks and add line numbers
+    function codestyling() {
+      $(selector).each(function(i, e) {
+        // Code highlight
+        hljs.highlightElement(e);
+        // No lines for plain text blocks
+        if (!$(this).hasClass('language-text')) {
+          var code = $(this);
+          // Calculate amount of lines
+          var lines = code.html().split(/\n(?!$)/g).length;
+          var numbers = [];
+          if (lines > 1) {
+            lines++;
+          }
+          for (i = 1; i < lines; i++) {
+            numbers += '<span class="line" aria-hidden="true">' + i + '</span>';
+          }
+          code.parent().append('<div class="lines">' + numbers + '</div>');
+        }
+      });
+    }
+
+    // Format code blocks only
+    function codestylingWithoutLineNumbers() {
+      $(selector).each(function(i, e) {
+        // Code highlight
+        hljs.highlightElement(e);
+      });
+    }
+
+    codestylingWithoutLineNumbers();
+    // Reading progress bar on window top
+    function readingProgress() {
+      var postBottom = post.offset().top + post.height();
+      var viewportHeight = viewport.height();
+      var progress = 100 - (((postBottom - (viewport.scrollTop() + viewportHeight) + viewportHeight / 3) / (postBottom - viewportHeight + viewportHeight / 3)) * 100);
+      $('.progress-bar').css('width', progress + '%');
+      (progress > 100) ? $('.progress-container').addClass('complete'): $('.progress-container').removeClass('complete');
+    }
+    readingProgress();
+    // Trigger reading progress
+    viewport.on({
+      'scroll': function() {
+        readingProgress();
+      },
+      'resize': function() {
+        readingProgress();
+      },
+      'orientationchange': function() {
+        readingProgress();
+      }
+    });
+
+  });
+</script>
+</body>
+
+</html>

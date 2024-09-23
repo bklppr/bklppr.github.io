@@ -1,7 +1,8 @@
-AUTHOR = 'Benjamin Klepper'
+AUTHOR = ''
 SITENAME = 'Data & Tech Notes'
+SITEURL = ''
 # SITEURL = 'http://127.0.0.1:8000'  # local development
-SITEURL = 'https://bklppr.github.io'
+# SITEURL = 'https://bklppr.github.io'
 
 PATH = 'content'
 
@@ -21,12 +22,15 @@ LINKS = ()
 # Social widget - remove it if you don't want social links
 SOCIAL = ()
 
-DEFAULT_PAGINATION = False  # Disable pagination since we only want one articles page
+DEFAULT_PAGINATION = 10
 
-THEME = 'pelican-chunk'  # Make sure this theme is installed and properly configured
+THEME = 'attila'  # Make sure this theme is installed and properly configured
 
 # Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
+RELATIVE_URLS = True
+
+TAGS_URL = 'tags'
+CATEGORIES_URL = 'categories'
 
 # Set the paths for static pages and articles
 PAGE_PATHS = ['pages']
@@ -41,10 +45,10 @@ POST_SAVE_AS = 'posts/{slug}.html'
 
 # Add custom menu items for the top navigation bar
 MENUITEMS = (
-    ('About', '/pages/about.html'),
+    # ('About', '/pages/about.html'),
     ('Posts', '/index.html'),
 )
 
 USE_FOLDER_AS_CATEGORY = False  # Disable using folders as categories
-DEFAULT_CATEGORY = ''  # Set the default category to an empty string
+DEFAULT_CATEGORY = 'General'  # Set the default category to an empty string
 DISPLAY_CATEGORIES_ON_MENU = False  # Disable categories in the menu
