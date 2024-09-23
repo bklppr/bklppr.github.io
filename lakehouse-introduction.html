@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>Lakehouse - Introduction</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="./lakehouse-introduction.html" rel="canonical" />
+  <!-- Feed -->
+
+  <link href="./theme/css/style.css" type="text/css" rel="stylesheet" />
+
+
+  <!-- Custom fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+    var siteUrl = '.';
+  </script>
+
+  <script>
+    var localTheme = localStorage.getItem('attila_theme');
+    switch (localTheme) {
+      case 'dark':
+        document.documentElement.classList.add('theme-dark');
+        break;
+      case 'light':
+        document.documentElement.classList.add('theme-light');
+        break;
+      default:
+        break;
+    }
+  </script>
+
+
+
+
+
+
+
+    <meta name="description" content="Summary of section 1 of the paper. The traditional data warehouse architecture is expected to be replaced by a new pattern called the...">
+
+    <meta name="author" content="">
+
+    <meta name="tags" content="Lakehouse">
+    <meta name="tags" content="Data Architecture">
+    <meta name="tags" content="Data Lakes">
+    <meta name="tags" content="Data Warehousing">
+
+
+
+
+<!-- Open Graph -->
+<meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="Data & Tech Notes"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Lakehouse - Introduction"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="Summary of section 1 of the paper. The traditional data warehouse architecture is expected to be replaced by a new pattern called the..."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="./lakehouse-introduction.html"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2024-09-18 00:00:00+02:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content=""/>
+<meta prefix="og: http://ogp.me/ns#" property="article:author" content="./author/.html">
+<meta prefix="og: http://ogp.me/ns#" property="article:section" content="General"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Lakehouse"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Data Architecture"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Data Lakes"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Data Warehousing"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="./theme/images/home-bg.jpg">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "Lakehouse - Introduction",
+  "headline": "Lakehouse - Introduction",
+  "datePublished": "2024-09-18 00:00:00+02:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "",
+    "url": "./author/.html"
+  },
+  "image": "./theme/images/post-bg.jpg",
+  "url": "./lakehouse-introduction.html",
+  "description": "Summary of section 1 of the paper. The traditional data warehouse architecture is expected to be replaced by a new pattern called the..."
+}
+</script>
+</head>
+
+
+
+
+
+
+
+
+
+<body class="category-template">
+
+<div class="nav-header">
+  <nav class="nav-wrapper" aria-label="Main">
+<ul>
+
+    <li class="nav-Posts " role="presentation"><a href="/index.html"><span>Posts</span></a></li>
+
+      <li role="presentation"><a href="./pages/about.html"><span>About</span></a></li>
+</ul>
+<ul class="nav-meta">
+  <li class="nav-search" style="display: none;">
+    <a title="Search">
+      <i class="icon icon-search" aria-hidden="true"></i>
+      <span>Search</span>
+    </a>
+  </li>
+</ul>  </nav>
+
+  <div class="nav-wrapper-control">
+    <div class="inner">
+      <a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>Menu</a>
+      <a class="nav-search" title="Search" role="button" style="display: none;"><i class="icon icon-search" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</div>
+<div class="nav-close" role="button" aria-label="Close"></div>
+  <section id="wrapper" class="page-wrapper">
+    <!-- Progressbar -->
+    <div class="progress-container">
+      <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="post-header ">
+      <div class="inner">
+        <span class="post-info">
+          <span class="post-type">Article</span>
+          <span class="post-count">General</span>
+        </span>
+        <h1 class="post-title">Lakehouse - Introduction</h1>
+        <div class="post-meta">
+          <div class="post-meta-avatars">
+
+
+            <figure class="post-meta-avatar avatar">
+              <a class="author-avatar" href="./author/.html">
+                <img class="author-profile-image" src="" alt="" />
+              </a>
+            </figure>
+          </div>
+
+          <h4 class="post-meta-author">
+            
+          </h4>
+          <time datetime="Wed 18 September 2024">Wed 18 September 2024</time>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+          <section class="post-content">
+            <p><em>Summary of section 1 of the <a href="https://www.cidrdb.org/cidr2021/papers/cidr2021_paper17.pdf">paper</a>.</em></p>
+<p>The traditional <strong>data warehouse</strong> architecture is expected to be replaced by a new pattern called the <strong>Lakehouse</strong>, which combines the benefits of <strong>data lakes</strong> and <strong>data warehouses</strong>. A Lakehouse is characterized by:</p>
+<ol>
+<li><strong>Open direct-access data formats</strong> (e.g., Apache Parquet, ORC).</li>
+<li><strong>First-class support for machine learning (ML) and data science</strong> workloads.</li>
+<li><strong>State-of-the-art performance</strong>.</li>
+</ol>
+<h3>Evolution of Data Architectures</h3>
+<p><strong>First Generation</strong>:</p>
+<ul>
+<li><strong>Centralized Data Warehouses</strong>: Focused on <strong>centralizing data</strong> from operational systems into data warehouses for <strong>Business Intelligence (BI)</strong> and reporting.</li>
+<li><strong>Schema-on-Write</strong>: Employed a <strong>schema-on-write</strong> approach, meaning data was structured and optimized for downstream analysis before being stored in the warehouse.</li>
+<li><strong>On-Premises and Coupled Systems</strong>: Typically coupled <strong>compute and storage</strong> into a single on-premises system or appliance, which required provisioning for peak load capacity.</li>
+<li><strong>Limited to Structured Data</strong>: Primarily handled <strong>structured data</strong>, making it difficult to store or query unstructured data types like video, audio, and text documents.</li>
+<li><strong>Costly and Rigid</strong>: Scaling was expensive, as enterprises had to pay for both <strong>compute and storage</strong> resources upfront, leading to high costs as datasets grew.</li>
+</ul>
+<p><strong>Second Generation Systems</strong>:</p>
+<ul>
+<li><strong>Storage Infrastructure</strong>: Built on <strong>on-premises systems</strong> like Hadoop's HDFS, which provided large-scale, low-cost storage for data lakes.</li>
+<li><strong>Separation of Compute and Storage</strong>: Introduced the concept of decoupling compute from storage but typically relied on <strong>private data centers</strong> or on-premise infrastructure.</li>
+<li><strong>Schema-on-Read</strong>: Adopted a <strong>schema-on-read</strong> approach, allowing raw, unstructured data (e.g., logs, video, audio) to be stored first and processed later.</li>
+<li><strong>ETL Process</strong>: Data was first loaded into the data lake, then later ETLed into a data warehouse (e.g., Teradata) for high-performance analytics and BI tasks.</li>
+</ul>
+<p><strong>Current Cloud Systems</strong>:</p>
+<ul>
+<li><strong>Storage Infrastructure</strong>: Fully transitioned to <strong>cloud-based</strong> storage services like <strong>Amazon S3</strong>, <strong>Azure Data Lake Storage (ADLS)</strong>, and <strong>Google Cloud Storage (GCS)</strong>, offering superior scalability, durability, and geo-replication.</li>
+<li><strong>Fully Cloud-Native</strong>: Unlike the second-generation systems, these systems are <strong>fully cloud-native</strong>, taking advantage of the cloud's pay-as-you-go model and seamless scalability.</li>
+<li><strong>Same Two-Tier Architecture</strong>: Continue to follow the <strong>two-tier architecture</strong> where data is first stored in a cloud data lake and then ETLed into a data warehouse (e.g., Redshift, Snowflake) for analytics.</li>
+<li><strong>Advanced Durability and Lower Costs</strong>: Provide significantly better durability (often &gt;10 nines) and lower storage costs, including archival options like AWS Glacier, compared to on-premise solutions.</li>
+</ul>
+<h3>Challenges of Current Architectures</h3>
+<p>Despite cost efficiency, the two-tier architecture has several drawbacks:</p>
+<ol>
+<li><strong>Reliability</strong>: Keeping the data lake and warehouse consistent requires ongoing engineering effort and introduces risks of data corruption.</li>
+<li><strong>Data Staleness</strong>: Data in warehouses is often stale, leading to delayed insights and outdated analytics.</li>
+<li><strong>Limited Support for Advanced Analytics</strong>: Modern use cases, like machine learning, require large datasets and complex processing, which traditional warehouses don’t handle well.</li>
+<li><strong>High Total Cost of Ownership</strong>: Maintaining separate storage and compute systems increases costs, including data duplication and ETL overhead.</li>
+</ol>
+<h3>The Promise of Lakehouse Architecture</h3>
+<p>The <strong>Lakehouse</strong> aims to unify the best of both data lakes and warehouses by:</p>
+<ul>
+<li><strong>Reliable data management</strong>: Systems like <strong>Delta Lake</strong> and <strong>Apache Iceberg</strong> bring transactional consistency, versioning, and advanced data management to data lakes.</li>
+<li><strong>Support for ML and data science</strong>: Direct access to data lake formats and optimized <strong>DataFrame APIs</strong> allow Lakehouses to efficiently support machine learning and data science workloads.</li>
+<li><strong>SQL Performance</strong>: Advanced techniques and optimizations, such as auxiliary data and optimized layouts, enable SQL performance on par with traditional warehouses over Parquet and ORC datasets.</li>
+</ul>
+<p>The Lakehouse design addresses the challenges of data warehousing and enables new possibilities for modern data-driven applications.</p>
+          </section>
+
+
+          <section class="post-footer" >
+            <div class="post-share">
+              <span class="post-info-label">Share</span>
+              <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Lakehouse - Introduction&amp;url=./lakehouse-introduction.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="icon icon-twitter" aria-hidden="true"></i><span class="hidden">Twitter</span>
+              </a>
+              <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./lakehouse-introduction.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="icon icon-facebook" aria-hidden="true"></i><span class="hidden">Facebook</span>
+              </a>
+              <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=./lakehouse-introduction.html&amp;title=Lakehouse - Introduction" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+                <i class="icon icon-linkedin" aria-hidden="true"></i><span class="hidden">LinkedIn</span>
+              </a>
+              <a title="Email" aria-label="Email" class="email" href="mailto:?subject=Lakehouse - Introduction&amp;body=./lakehouse-introduction.html">
+                <i class="icon icon-mail" aria-hidden="true"></i><span class="hidden">Email</span>
+              </a>
+              <div class="clear"></div>
+            </div>
+
+            <aside class="post-tags">
+<a href="./tag/lakehouse.html">Lakehouse</a><a href="./tag/data-architecture.html">Data Architecture</a><a href="./tag/data-lakes.html">Data Lakes</a><a href="./tag/data-warehousing.html">Data Warehousing</a>            </aside>
+
+            <div class="clear"></div>
+
+
+          </section>
+
+
+          <aside class="post-nav">
+            <div class="clear"></div>
+          </aside>
+
+        </div>
+      </article>
+    </main>
+    <div class="nav-footer">
+      <nav class="nav-wrapper" aria-label="Footer">
+        <span class="nav-copy">Data & Tech Notes &copy; 2023
+        </span>
+        <span class="nav-credits">
+
+
+
+          Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a> &bull; Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a> &bull;
+          <a class="menu-item js-theme" href="#" data-system="System theme" data-dark="Dark theme" data-light="Light theme">
+            <span class="theme-icon"></span><span class="theme-text">System theme</span>
+          </a>
+        </span>
+      </nav>
+    </div>
+
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script type="text/javascript" src="./theme/js/jquery.fitvids.js"></script>
+  <script type="text/javascript" src="./theme/js/script.js"></script>
+
+
+  <!-- 	The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in article.html, but it needs to be included down here, after jQuery has already loaded. -->
+
+<!-- Add MathJax and FontAwesome for Asciidoc -->\
+<script>
+  $(document).ready(function () {
+    var viewport = $(window);
+    var post = $('.post-content');
+    // Responsive videos with fitVids
+    post.fitVids();
+
+    var mdSelector=".highlight pre";
+    var rstSelector=".highlight pre";
+    // For ":source-highlighter: highlight.js`" in asciidoc
+    var adocSelector="pre.highlight > code[data-lang]"
+    var selector=mdSelector;
+    // Format code blocks and add line numbers
+    function codestyling() {
+      $(selector).each(function(i, e) {
+        // Code highlight
+        hljs.highlightElement(e);
+        // No lines for plain text blocks
+        if (!$(this).hasClass('language-text')) {
+          var code = $(this);
+          // Calculate amount of lines
+          var lines = code.html().split(/\n(?!$)/g).length;
+          var numbers = [];
+          if (lines > 1) {
+            lines++;
+          }
+          for (i = 1; i < lines; i++) {
+            numbers += '<span class="line" aria-hidden="true">' + i + '</span>';
+          }
+          code.parent().append('<div class="lines">' + numbers + '</div>');
+        }
+      });
+    }
+
+    // Format code blocks only
+    function codestylingWithoutLineNumbers() {
+      $(selector).each(function(i, e) {
+        // Code highlight
+        hljs.highlightElement(e);
+      });
+    }
+
+    codestylingWithoutLineNumbers();
+    // Reading progress bar on window top
+    function readingProgress() {
+      var postBottom = post.offset().top + post.height();
+      var viewportHeight = viewport.height();
+      var progress = 100 - (((postBottom - (viewport.scrollTop() + viewportHeight) + viewportHeight / 3) / (postBottom - viewportHeight + viewportHeight / 3)) * 100);
+      $('.progress-bar').css('width', progress + '%');
+      (progress > 100) ? $('.progress-container').addClass('complete'): $('.progress-container').removeClass('complete');
+    }
+    readingProgress();
+    // Trigger reading progress
+    viewport.on({
+      'scroll': function() {
+        readingProgress();
+      },
+      'resize': function() {
+        readingProgress();
+      },
+      'orientationchange': function() {
+        readingProgress();
+      }
+    });
+
+  });
+</script>
+</body>
+
+</html>
