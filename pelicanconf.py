@@ -1,8 +1,8 @@
 AUTHOR = ''
 SITENAME = 'Data & Tech Notes'
-SITEURL = ''
+# SITEURL = ''
 # SITEURL = 'http://127.0.0.1:8000'  # local development
-# SITEURL = 'https://bklppr.github.io'
+SITEURL = 'https://bklppr.github.io'
 
 PATH = 'content'
 
