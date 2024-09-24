@@ -7,14 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 
-  <title>Delta Lake - Introduction</title>
+  <title>Medallion Architecture</title>
 
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="origin" />
   <meta name="generator" content="Pelican" />
-<link href="./delta-lake-introduction.html" rel="canonical" />
+<link href="./medallion-architecture.html" rel="canonical" />
   <!-- Feed -->
 
   <link href="./theme/css/style.css" type="text/css" rel="stylesheet" />
@@ -55,27 +55,35 @@
 
 
 
-    <meta name="description" content="Summary of section 1 of the paper. Cloud object stores like Amazon S3 and Azure Blob Storage are widely used due to their scalability...">
+    <meta name="description" content="The Medallion Architecture is a design pattern for organizing data in data lakes, helping manage raw and transformed data in a...">
 
     <meta name="author" content="Benjamin Klepper">
 
-    <meta name="tags" content="Delta Lake">
+    <meta name="tags" content="Data Management">
+    <meta name="tags" content="Data Lakes">
+    <meta name="tags" content="ETL">
+    <meta name="tags" content="ELT">
+    <meta name="tags" content="Medallion Architecture">
 
 
 
 
 <!-- Open Graph -->
 <meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="Data & Tech Notes"/>
-<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Delta Lake - Introduction"/>
-<meta prefix="og: http://ogp.me/ns#" property="og:description" content="Summary of section 1 of the paper. Cloud object stores like Amazon S3 and Azure Blob Storage are widely used due to their scalability..."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Medallion Architecture"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="The Medallion Architecture is a design pattern for organizing data in data lakes, helping manage raw and transformed data in a..."/>
 <meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
-<meta prefix="og: http://ogp.me/ns#" property="og:url" content="./delta-lake-introduction.html"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="./medallion-architecture.html"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
-<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2024-09-13 00:00:00+02:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2024-09-18 00:00:00+02:00"/>
 <meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content=""/>
 <meta prefix="og: http://ogp.me/ns#" property="article:author" content="./author/benjamin-klepper.html">
 <meta prefix="og: http://ogp.me/ns#" property="article:section" content="General"/>
-<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Delta Lake"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Data Management"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Data Lakes"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="ETL"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="ELT"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Medallion Architecture"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:image" content="./theme/images/home-bg.jpg">
 
 <!-- Twitter Card -->
@@ -84,9 +92,9 @@
 {
   "@context": "http://schema.org",
   "@type": "Article",
-  "name": "Delta Lake - Introduction",
-  "headline": "Delta Lake - Introduction",
-  "datePublished": "2024-09-13 00:00:00+02:00",
+  "name": "Medallion Architecture",
+  "headline": "Medallion Architecture",
+  "datePublished": "2024-09-18 00:00:00+02:00",
   "dateModified": "",
   "author": {
     "@type": "Person",
@@ -94,8 +102,8 @@
     "url": "./author/benjamin-klepper.html"
   },
   "image": "./theme/images/post-bg.jpg",
-  "url": "./delta-lake-introduction.html",
-  "description": "Summary of section 1 of the paper. Cloud object stores like Amazon S3 and Azure Blob Storage are widely used due to their scalability..."
+  "url": "./medallion-architecture.html",
+  "description": "The Medallion Architecture is a design pattern for organizing data in data lakes, helping manage raw and transformed data in a..."
 }
 </script>
 </head>
@@ -149,7 +157,7 @@
           <span class="post-type">Article</span>
           <span class="post-count">General</span>
         </span>
-        <h1 class="post-title">Delta Lake - Introduction</h1>
+        <h1 class="post-title">Medallion Architecture</h1>
         <div class="post-meta">
           <div class="post-meta-avatars">
 
@@ -164,7 +172,7 @@
           <h4 class="post-meta-author">
             Benjamin Klepper
           </h4>
-          <time datetime="Fri 13 September 2024">Fri 13 September 2024</time>
+          <time datetime="Wed 18 September 2024">Wed 18 September 2024</time>
         </div>
       </div>
     </header>
@@ -174,49 +182,64 @@
         <article class="post">
         <div class="inner">
           <section class="post-content">
-            <p><em>Summary of section 1 of the <a href="https://www.vldb.org/pvldb/vol13/p3411-armbrust.pdf">paper</a>.</em></p>
-<p>Cloud object stores like <strong>Amazon S3</strong> and <strong>Azure Blob Storage</strong> are widely used due to their scalability and pay-as-you-go model, making them ideal for managing large datasets in <strong>data warehouses</strong> and <strong>data lakes</strong>. </p>
-<p>Many open-source systems (e.g., <strong>Apache Spark</strong>, <strong>Hive</strong>) and commercial platforms (e.g., <strong>AWS Athena</strong>, <strong>Google BigQuery</strong>) support these stores using file formats like <strong>Parquet</strong> and <strong>ORC</strong>. However, object stores, unlike distributed filesystems, function as key-value stores with no cross-object consistency, leading to challenges with <strong>data consistency</strong>, <strong>atomic writes</strong>, and <strong>performance</strong>.</p>
-<p>Storing relational datasets as objects (e.g., Parquet files) can work for simple queries, but complex workloads struggle due to non-atomic multi-object updates and expensive metadata operations, especially for large tables. </p>
-<p><strong>Enterprise datasets</strong>, which are continuously updated, face challenges related to <strong>atomic updates</strong>, <strong>privacy regulations</strong> (e.g., <strong>GDPR</strong>), and the repair of incorrect data.</p>
+            <p>The Medallion Architecture is a design pattern for organizing data in data lakes, helping manage raw and transformed data in a structured way. </p>
 <hr>
-<p><strong>Delta Lake</strong> was designed to address the challenges of managing data in cloud object stores by providing an <strong>ACID-compliant</strong> table storage layer. It uses a <strong>write-ahead log</strong> stored in the cloud to maintain data consistency and ensure atomic updates. </p>
-<p>The data itself is stored in Parquet format, allowing for high-performance parallel reads and writes. Delta Lake also optimizes <strong>metadata management</strong>, enabling faster searches. Transactions are managed using <strong>optimistic concurrency control</strong>, which eliminates the need for always-on servers and allows users to scale compute and storage separately.</p>
+<h3>What is the Medallion Architecture?</h3>
+<p>The <strong>Medallion Architecture</strong> is a way of organizing data in stages, where each stage applies more refinement to the data.</p>
+<h4>Stages:</h4>
+<ol>
+<li><strong>Bronze Layer</strong>: The raw, unprocessed data layer.</li>
+<li><strong>Silver Layer</strong>: The cleaned and transformed data.</li>
+<li><strong>Gold Layer</strong>: The final, business-ready data used for reporting and analysis.</li>
+</ol>
+<p>This architecture is typically used in <strong>data lakes</strong> or <strong>data lakehouses</strong>, where large volumes of data are ingested from many sources. Each layer adds value to the data by improving its quality or preparing it for specific use cases.</p>
 <hr>
-<p>Delta Lake's transactional design enables several advanced features not available in traditional cloud data lakes, addressing key pain points. These include:</p>
+<h3>Bronze Layer: The Raw Data</h3>
 <ul>
-<li><strong>Time travel</strong>, which allows querying past snapshots or rolling back updates</li>
-<li>Operations like <strong>UPSERT</strong>, <strong>DELETE</strong>, and <strong>MERGE</strong> to efficiently update data and comply with regulations like GDPR</li>
-<li>Support for efficient <strong>streaming I/O</strong>, enabling real-time data ingestion with small objects, which are later combined for performance</li>
-<li><strong>Caching</strong> for faster reads</li>
-<li><strong>Data layout optimization</strong> using <strong>Z-ordering</strong></li>
-<li><strong>Schema evolution</strong> without rewriting old data</li>
-<li><strong>Audit logging</strong></li>
+<li><strong>Raw Data</strong>: No transformation or cleaning has occurred. Data is stored as it is ingested.</li>
+<li><strong>Flexible and Fast Ingestion</strong>: Data can be loaded quickly without requiring any pre-processing.</li>
+<li><strong>High Storage Volume</strong>: Since all data is kept in its raw form, this layer typically holds the largest amount of data.</li>
 </ul>
-<p>Together, these features make Delta Lake a unified solution that combines the functionality of both data warehouses and data lakes, simplifying architectures and improving performance.</p>
+<p>The Bronze Layer is used for <strong>historical analysis</strong> and <strong>data retention</strong>.</p>
+<hr>
+<h3>Silver Layer: Cleaned and Transformed Data</h3>
+<ul>
+<li><strong>Data Cleansing</strong>: Data is cleaned to remove errors and inconsistencies.</li>
+<li><strong>Transformation</strong>: Data is structured and normalized, making it easier to query.</li>
+<li><strong>Improved Quality</strong>: The data is now more reliable and ready for further processing.</li>
+</ul>
+<p>The Silver Layer is often used for <strong>data exploration</strong> and <strong>machine learning</strong>.</p>
+<hr>
+<h3>Gold Layer: Business-Ready Data</h3>
+<ul>
+<li><strong>Aggregated and Optimized</strong>: Data is aggregated, filtered, and optimized for fast queries.</li>
+<li><strong>Business-Friendly Format</strong>: Data is organized for easy use in business reports, dashboards, and analytics.</li>
+<li><strong>Reliable for Decision Making</strong>: The Gold Layer is trusted data that can be used directly by decision-makers.</li>
+</ul>
+<p>The Gold Layer is used by <strong>business analysts</strong> and <strong>executives</strong> who need fast, reliable access to insights for decision-making.</p>
           </section>
 
 
           <section class="post-footer" >
             <div class="post-share">
               <span class="post-info-label">Share</span>
-              <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Delta Lake - Introduction&amp;url=./delta-lake-introduction.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+              <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Medallion Architecture&amp;url=./medallion-architecture.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="icon icon-twitter" aria-hidden="true"></i><span class="hidden">Twitter</span>
               </a>
-              <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./delta-lake-introduction.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+              <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./medallion-architecture.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                 <i class="icon icon-facebook" aria-hidden="true"></i><span class="hidden">Facebook</span>
               </a>
-              <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=./delta-lake-introduction.html&amp;title=Delta Lake - Introduction" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+              <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=./medallion-architecture.html&amp;title=Medallion Architecture" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
                 <i class="icon icon-linkedin" aria-hidden="true"></i><span class="hidden">LinkedIn</span>
               </a>
-              <a title="Email" aria-label="Email" class="email" href="mailto:?subject=Delta Lake - Introduction&amp;body=./delta-lake-introduction.html">
+              <a title="Email" aria-label="Email" class="email" href="mailto:?subject=Medallion Architecture&amp;body=./medallion-architecture.html">
                 <i class="icon icon-mail" aria-hidden="true"></i><span class="hidden">Email</span>
               </a>
               <div class="clear"></div>
             </div>
 
             <aside class="post-tags">
-<a href="./tag/delta-lake.html">Delta Lake</a>            </aside>
+<a href="./tag/data-management.html">Data Management</a><a href="./tag/data-lakes.html">Data Lakes</a><a href="./tag/etl.html">ETL</a><a href="./tag/elt.html">ELT</a><a href="./tag/medallion-architecture.html">Medallion Architecture</a>            </aside>
 
             <div class="clear"></div>
 

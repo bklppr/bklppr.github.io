@@ -7,14 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 
-  <title>Data & Tech Notes - Tag Data Architecture</title>
+  <title>Data & Tech Notes - Articles by Benjamin Klepper</title>
 
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="origin" />
   <meta name="generator" content="Pelican" />
-<link href="../tag/data-architecture.html" rel="canonical" />
+<link href="../author/benjamin-klepper.html" rel="canonical" />
   <!-- Feed -->
 
   <link href="../theme/css/style.css" type="text/css" rel="stylesheet" />
@@ -63,7 +63,7 @@
 
 
 
-<body class="tag-template">
+<body class="author-template">
 
 <div class="nav-header">
   <nav class="nav-wrapper" aria-label="Main">
@@ -95,16 +95,18 @@
     <!-- Set your background image for this header on the line below. -->
     <header class="blog-header ">
       <div class="inner">
-        <div class="archive archive-tag box archive-box">
+        <div class="archive archive-author box archive-box">
           <span class="archive-info">
-            <span class="archive-type">Tag</span>
-            <span class="archive-count">
-            2 Posts
-            </span>
+            <span class="archive-type">Author</span>
+            <span class="archive-count">24  posts </span>
           </span>
-          <h2 class="archive-title">Data Architecture</h2>
+          <figure class="archive-avatar avatar">
+          </figure>
+          <h2 class="archive-title">Benjamin Klepper</h2>
+          <span class="archive-links">
+          <!-- Social linkes in alphabet order. -->
+          </span>
         </div>
-
       </div>
     </header>
 
@@ -114,7 +116,8 @@
 <nav class="pagination" aria-label="Pagination" role="pagination">
   <div class="inner">
     <div class="box pagination-box">
-      <span class="pagination-info">Page 1 of 1</span>
+      <a title="Newer Posts" class="pagination-next" href="../author/benjamin-klepper2.html"><i class="icon icon-arrow-left"></i> <span class="pagination-label">Newer Posts</span></a>
+      <span class="pagination-info">Page 3 of 3</span>
     </div>
   </div>
 </nav>
@@ -125,17 +128,17 @@
     <article class="post">
         <div class="inner">
             <div class="box post-box">
-                <h2 class="post-title"><a href="../lakehouse-architecture.html" rel="bookmark" title="Permalink to Lakehouse - The Lakehouse Architecture">Lakehouse - The Lakehouse Architecture</a>
+                <h2 class="post-title"><a href="../partitioning-data-layout-optimization.html" rel="bookmark" title="Permalink to Partitioning and Data Layout Optimization">Partitioning and Data Layout Optimization</a>
                 </h2>
                 <span class="post-meta">
                     By 
                         <a class="post-meta-tag" href="../author/benjamin-klepper.html">Benjamin Klepper</a>
                      in 
                     <a class="post-meta-tag" href="../category/general.html">General</a>
-                      on <time datetime="Fri 20 September 2024">Fri 20 September 2024</time>
+                      on <time datetime="Wed 04 September 2024">Wed 04 September 2024</time>
                 </span>
                 <p class="post-excerpt">
-                        Summary of section 3 of the paper. The Lakehouse architecture combines the benefits of data lakes (low-cost storage, open file formats) with the management and performance features of data warehouses (ACID transactions, data versioning, indexing,...
+                        Partitioning divides large datasets into smaller, more manageable segments based on specific attributes, improving query performance by limiting the amount of data scanned. Partitioning by Attributes: Dividing data by commonly queried fields...
                 </p>
 
                 <div class="post-excerpt">
@@ -149,17 +152,65 @@
     <article class="post">
         <div class="inner">
             <div class="box post-box">
-                <h2 class="post-title"><a href="../lakehouse-introduction.html" rel="bookmark" title="Permalink to Lakehouse - Introduction">Lakehouse - Introduction</a>
+                <h2 class="post-title"><a href="../metadata-in-large-data-systems.html" rel="bookmark" title="Permalink to The Role of Metadata in Large Data Systems">The Role of Metadata in Large Data Systems</a>
                 </h2>
                 <span class="post-meta">
                     By 
                         <a class="post-meta-tag" href="../author/benjamin-klepper.html">Benjamin Klepper</a>
                      in 
                     <a class="post-meta-tag" href="../category/general.html">General</a>
-                      on <time datetime="Wed 18 September 2024">Wed 18 September 2024</time>
+                      on <time datetime="Tue 03 September 2024">Tue 03 September 2024</time>
                 </span>
                 <p class="post-excerpt">
-                        Summary of section 1 of the paper. The traditional data warehouse architecture is expected to be replaced by a new pattern called the Lakehouse, which combines the benefits of data lakes and data warehouses. A Lakehouse is characterized by: Open...
+                        Metadata is data about data, providing essential context to understand, manage, and optimize datasets. In large data systems, metadata plays a crucial role in improving both performance and data organization. Types of Metadata: Data Schema:...
+                </p>
+
+                <div class="post-excerpt">
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+
+    <article class="post">
+        <div class="inner">
+            <div class="box post-box">
+                <h2 class="post-title"><a href="../schema-evolution.html" rel="bookmark" title="Permalink to Schema Evolution in Databases">Schema Evolution in Databases</a>
+                </h2>
+                <span class="post-meta">
+                    By 
+                        <a class="post-meta-tag" href="../author/benjamin-klepper.html">Benjamin Klepper</a>
+                     in 
+                    <a class="post-meta-tag" href="../category/general.html">General</a>
+                      on <time datetime="Mon 02 September 2024">Mon 02 September 2024</time>
+                </span>
+                <p class="post-excerpt">
+                        A schema defines the structure of a database, including tables, columns, data types, and relationships between them. Schema evolution refers to the ability of a system to accommodate changes in this structure over time. This is critical for...
+                </p>
+
+                <div class="post-excerpt">
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+
+    <article class="post">
+        <div class="inner">
+            <div class="box post-box">
+                <h2 class="post-title"><a href="../acid-transactions.html" rel="bookmark" title="Permalink to ACID Transactions in Databases">ACID Transactions in Databases</a>
+                </h2>
+                <span class="post-meta">
+                    By 
+                        <a class="post-meta-tag" href="../author/benjamin-klepper.html">Benjamin Klepper</a>
+                     in 
+                    <a class="post-meta-tag" href="../category/general.html">General</a>
+                      on <time datetime="Sun 01 September 2024">Sun 01 September 2024</time>
+                </span>
+                <p class="post-excerpt">
+                        ACID (Atomicity, Consistency, Isolation, Durability) defines properties essential for reliable database transactions. Atomicity: A transaction is all-or-nothing. If any part fails, the entire transaction is rolled back. Example: When updating...
                 </p>
 
                 <div class="post-excerpt">
@@ -172,7 +223,8 @@
 <nav class="pagination" aria-label="Pagination" role="pagination">
   <div class="inner">
     <div class="box pagination-box">
-      <span class="pagination-info">Page 1 of 1</span>
+      <a title="Newer Posts" class="pagination-next" href="../author/benjamin-klepper2.html"><i class="icon icon-arrow-left"></i> <span class="pagination-label">Newer Posts</span></a>
+      <span class="pagination-info">Page 3 of 3</span>
     </div>
   </div>
 </nav>

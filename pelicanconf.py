@@ -1,4 +1,4 @@
-AUTHOR = ''
+AUTHOR = 'Benjamin Klepper'
 SITENAME = 'Data & Tech Notes'
 # SITEURL = ''
 # SITEURL = 'http://127.0.0.1:8000'  # local development
