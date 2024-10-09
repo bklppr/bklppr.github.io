@@ -7,14 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 
-  <title>Delta Lake: Higher-Level Features</title>
+  <title>Data Validation with Pandera</title>
 
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="origin" />
   <meta name="generator" content="Pelican" />
-<link href="./delta-lake-higher-level-features.html" rel="canonical" />
+<link href="./pandera.html" rel="canonical" />
   <!-- Feed -->
 
   <link href="./theme/css/style.css" type="text/css" rel="stylesheet" />
@@ -55,33 +55,31 @@
 
 
 
-    <meta name="description" content="Summary of section 4 of the paper. Delta Lake’s transactional design enables a range of high-level features similar to traditional...">
+    <meta name="description" content="See paper and docs. Data validation ensures that datasets are accurate and suitable for analysis, modeling, or visualization. Pandera is...">
 
     <meta name="author" content="Benjamin Klepper">
 
-    <meta name="tags" content="Delta Lake">
-    <meta name="tags" content="Data Management">
-    <meta name="tags" content="Time Travel">
-    <meta name="tags" content="Data Layout">
+    <meta name="tags" content="Data Validation">
+    <meta name="tags" content="Pandera">
+    <meta name="tags" content="Data Quality">
 
 
 
 
 <!-- Open Graph -->
 <meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="Data & Tech Notes"/>
-<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Delta Lake: Higher-Level Features"/>
-<meta prefix="og: http://ogp.me/ns#" property="og:description" content="Summary of section 4 of the paper. Delta Lake’s transactional design enables a range of high-level features similar to traditional..."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Data Validation with Pandera"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="See paper and docs. Data validation ensures that datasets are accurate and suitable for analysis, modeling, or visualization. Pandera is..."/>
 <meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
-<meta prefix="og: http://ogp.me/ns#" property="og:url" content="./delta-lake-higher-level-features.html"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="./pandera.html"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
-<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2024-09-16 00:00:00+02:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2024-09-29 00:00:00+02:00"/>
 <meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content=""/>
 <meta prefix="og: http://ogp.me/ns#" property="article:author" content="./author/benjamin-klepper.html">
 <meta prefix="og: http://ogp.me/ns#" property="article:section" content="General"/>
-<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Delta Lake"/>
-<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Data Management"/>
-<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Time Travel"/>
-<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Data Layout"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Data Validation"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Pandera"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Data Quality"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:image" content="./theme/images/home-bg.jpg">
 
 <!-- Twitter Card -->
@@ -90,9 +88,9 @@
 {
   "@context": "http://schema.org",
   "@type": "Article",
-  "name": "Delta Lake: Higher-Level Features",
-  "headline": "Delta Lake: Higher-Level Features",
-  "datePublished": "2024-09-16 00:00:00+02:00",
+  "name": "Data Validation with Pandera",
+  "headline": "Data Validation with Pandera",
+  "datePublished": "2024-09-29 00:00:00+02:00",
   "dateModified": "",
   "author": {
     "@type": "Person",
@@ -100,8 +98,8 @@
     "url": "./author/benjamin-klepper.html"
   },
   "image": "./theme/images/post-bg.jpg",
-  "url": "./delta-lake-higher-level-features.html",
-  "description": "Summary of section 4 of the paper. Delta Lake’s transactional design enables a range of high-level features similar to traditional..."
+  "url": "./pandera.html",
+  "description": "See paper and docs. Data validation ensures that datasets are accurate and suitable for analysis, modeling, or visualization. Pandera is..."
 }
 </script>
 </head>
@@ -155,7 +153,7 @@
           <span class="post-type">Article</span>
           <span class="post-count">General</span>
         </span>
-        <h1 class="post-title">Delta Lake: Higher-Level Features</h1>
+        <h1 class="post-title">Data Validation with Pandera</h1>
         <div class="post-meta">
           <div class="post-meta-avatars">
 
@@ -170,7 +168,7 @@
           <h4 class="post-meta-author">
             Benjamin Klepper
           </h4>
-          <time datetime="Mon 16 September 2024">Mon 16 September 2024</time>
+          <time datetime="Sun 29 September 2024">Sun 29 September 2024</time>
         </div>
       </div>
     </header>
@@ -180,65 +178,54 @@
         <article class="post">
         <div class="inner">
           <section class="post-content">
-            <p><em>Summary of section 4 of the <a href="https://www.vldb.org/pvldb/vol13/p3411-armbrust.pdf">paper</a>.</em></p>
-<p>Delta Lake’s transactional design enables a range of high-level features similar to traditional analytical databases. In this post, we look at some of the most widely used features.</p>
+            <p><em>See <a href="https://pub.curvenote.com/0190827c-a326-79a1-9768-07193cc664cc/public/niels_bantilan-089cb8f15d67fcd724340b0ef2ba073a.pdf">paper</a> and <a href="https://pandera.readthedocs.io/en/stable/">docs</a>.</em></p>
+<p>Data validation ensures that datasets are accurate and suitable for analysis, modeling, or visualization. Pandera is a tool built to make data validation easier and more flexible, especially for users working with various dataframe libraries.</p>
 <hr>
-<h3>Time Travel and Rollbacks</h3>
-<p>Data pipelines often encounter issues, especially when ingesting “dirty” data. With traditional data lakes, it is difficult to undo updates that have already been applied. Similarly, some workflows, such as machine learning, require reproducing old versions of data for comparisons.</p>
-<p>Delta Lake’s immutable data objects and logs make it easy to query past snapshots of data using <strong>time travel</strong>. Users can specify a <strong>timestamp</strong> or a <strong>commit ID</strong> to read a previous version of the table. This feature is particularly useful for fixing errors in data pipelines or restoring data for machine learning experiments. Additionally, Delta Lake supports a <strong>CLONE</strong> command to create a copy-on-write a copy-on-write new version of a table starting at one of its existing snapshots.</p>
+<h3>Key Design Principles</h3>
+<p>Pandera follows important design principles to make data validation efficient and user-friendly:</p>
+<ol>
+<li><strong>Familiarity</strong>: Validation rules are intuitive for users familiar with dataframe workflows.</li>
+<li><strong>Seamless Integration</strong>: Works with different tools in the data science ecosystem, requiring minimal setup.</li>
+<li><strong>Custom Validation</strong>: Users can easily define custom validation rules for specific data needs.</li>
+<li><strong>Debugging Support</strong>: Provides clear error messages, making it easy to identify and fix issues.</li>
+<li><strong>Non-intrusive</strong>: Integrates smoothly into existing data pipelines without significant changes.</li>
+</ol>
 <hr>
-<h3>Efficient UPSERT, DELETE, and MERGE</h3>
-<p>Many enterprise datasets need to be updated over time due to regulatory requirements like <strong>GDPR</strong>, data correction, or late-arriving data. In traditional data lakes, applying these updates can be challenging without pausing reads.</p>
-<p>Delta Lake allows <strong>UPSERT</strong>, <strong>DELETE</strong>, and <strong>MERGE</strong> operations to be performed <strong>transactionally</strong>, replacing updated objects with new ones in the Delta log. This ensures that updates are applied atomically, with no partial updates visible to other users.</p>
-<hr>
-<h3>Streaming Ingest and Consumption</h3>
-<p>Deploying <strong>streaming pipelines</strong> is often complex in traditional cloud data lakes. To handle real-time data ingestion, users typically rely on separate message buses like <strong>Apache Kafka</strong> or <strong>Kinesis</strong>, which adds management overhead.</p>
-<p>Delta Lake integrates features that allow users to treat a Delta table as a <strong>message queue</strong>, eliminating the need for separate message systems in many scenarios:</p>
+<h3>How Pandera Works</h3>
+<p>At its core, Pandera uses <strong>schemas</strong> to define validation rules. A schema acts as a contract, ensuring the dataset has the correct structure, types, and values.</p>
 <ul>
-<li><strong>Write Compaction</strong>: Small objects are compacted into larger ones in the background, improving read performance while preserving write speed for real-time streaming.</li>
-<li><strong>Exactly-Once Streaming Writes</strong>: Delta Lake enables <strong>exactly-once writes</strong>, ensuring that streaming jobs avoid duplicate writes after failures.</li>
-<li><strong>Efficient Log Tailing</strong>: Consumers can easily find new records using <strong>log tailing</strong>, making it easy for streaming applications to process only the new data.</li>
-</ul>
-<p>These features allow many users to build streaming pipelines directly on low-cost cloud object stores with Delta, avoiding the need for separate messaging infrastructure.</p>
-<hr>
-<h3>Data Layout Optimization</h3>
-<p>Optimizing <strong>data layout</strong> is crucial for improving query performance in analytical systems, especially for highly selective queries. Delta Lake allows background processes to optimize data layout without affecting other operations. </p>
-<ul>
-<li><strong>OPTIMIZE Command</strong>: Users can run the <strong>OPTIMIZE</strong> command to compact small objects and compute missing statistics. By default, it creates 1 GB-sized objects, but this can be customized.</li>
-<li><strong>Z-Ordering by Multiple Attributes</strong>: Delta Lake supports <strong>Z-ordering</strong> to cluster data along multiple attributes (e.g., <code>sourceIp</code>, <code>destIp</code>, <code>time</code>). This improves locality and reduces the amount of data read during queries, making it especially useful for highly selective workloads.</li>
+<li><strong>Schemas</strong>: Define the structure of your data. If the data doesn't meet these rules, Pandera will highlight errors.</li>
+<li><strong>Validation checks</strong>: You can set rules like “values in this column should be positive” or “this column should not have duplicates.”</li>
+<li><strong>Error reporting</strong>: When data fails validation, Pandera provides detailed error messages to help you quickly address the issues.</li>
 </ul>
 <hr>
-<h3>Caching</h3>
-<p>Many cloud users run long-lived clusters for ad-hoc queries. Delta Lake supports <strong>caching</strong> on local storage (e.g., SSDs), improving performance by storing frequently accessed data and metadata locally. Since Delta objects are immutable, caching is safe and can significantly speed up queries.</p>
-<hr>
-<h3>Audit Logging</h3>
-<p>Delta Lake’s <strong>transaction log</strong> can be used for <strong>audit logging</strong> by recording commit information in <code>commitInfo</code> records. This ensures data security and compliance, as users can track the history of changes to the table. Delta Lake’s <strong>DESCRIBE HISTORY</strong> command allows users to view this history, ensuring transparency and auditability.</p>
-<hr>
-<h3>Schema Evolution and Enforcement</h3>
-<p>Over time, datasets often require <strong>schema changes</strong>. Delta Lake supports schema changes <strong>transactionally</strong>, ensuring that updates are applied consistently. Delta’s transaction log keeps track of schema updates, allowing old data to be queried with new schemas without needing to rewrite the data. This prevents errors caused by mismatched schemas during data ingestion.</p>
+<h3>Integration with Hypothesis</h3>
+<p>Pandera integrates with <strong>Hypothesis</strong> for property-based testing, allowing for automatic generation of multiple test cases. This makes testing your data pipelines more robust, as you can validate them against a wide variety of inputs.</p>
+<h3>Synthetic Data Generation</h3>
+<p>In addition to validation, Pandera can work with Hypothesis to generate <strong>synthetic data</strong> based on schema definitions. This feature allows you to create datasets that conform to your rules, making it easy to test your data processing functions with realistic data or create sample data for development.</p>
           </section>
 
 
           <section class="post-footer" >
             <div class="post-share">
               <span class="post-info-label">Share</span>
-              <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Delta Lake: Higher-Level Features&amp;url=./delta-lake-higher-level-features.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+              <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Data Validation with Pandera&amp;url=./pandera.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="icon icon-twitter" aria-hidden="true"></i><span class="hidden">Twitter</span>
               </a>
-              <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./delta-lake-higher-level-features.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+              <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./pandera.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                 <i class="icon icon-facebook" aria-hidden="true"></i><span class="hidden">Facebook</span>
               </a>
-              <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=./delta-lake-higher-level-features.html&amp;title=Delta Lake: Higher-Level Features" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+              <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=./pandera.html&amp;title=Data Validation with Pandera" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
                 <i class="icon icon-linkedin" aria-hidden="true"></i><span class="hidden">LinkedIn</span>
               </a>
-              <a title="Email" aria-label="Email" class="email" href="mailto:?subject=Delta Lake: Higher-Level Features&amp;body=./delta-lake-higher-level-features.html">
+              <a title="Email" aria-label="Email" class="email" href="mailto:?subject=Data Validation with Pandera&amp;body=./pandera.html">
                 <i class="icon icon-mail" aria-hidden="true"></i><span class="hidden">Email</span>
               </a>
               <div class="clear"></div>
             </div>
 
             <aside class="post-tags">
-<a href="./tag/delta-lake.html">Delta Lake</a><a href="./tag/data-management.html">Data Management</a><a href="./tag/time-travel.html">Time Travel</a><a href="./tag/data-layout.html">Data Layout</a>            </aside>
+<a href="./tag/data-validation.html">Data Validation</a><a href="./tag/pandera.html">Pandera</a><a href="./tag/data-quality.html">Data Quality</a>            </aside>
 
             <div class="clear"></div>
 
