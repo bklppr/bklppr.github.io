@@ -28,6 +28,7 @@ Delta Lake allows **UPSERT**, **DELETE**, and **MERGE** operations to be perform
 Deploying **streaming pipelines** is often complex in traditional cloud data lakes. To handle real-time data ingestion, users typically rely on separate message buses like **Apache Kafka** or **Kinesis**, which adds management overhead.
 
 Delta Lake integrates features that allow users to treat a Delta table as a **message queue**, eliminating the need for separate message systems in many scenarios:
+
 - **Write Compaction**: Small objects are compacted into larger ones in the background, improving read performance while preserving write speed for real-time streaming.
 - **Exactly-Once Streaming Writes**: Delta Lake enables **exactly-once writes**, ensuring that streaming jobs avoid duplicate writes after failures.
 - **Efficient Log Tailing**: Consumers can easily find new records using **log tailing**, making it easy for streaming applications to process only the new data.
