@@ -1,5 +1,5 @@
 Title: The Data Engineering Lifecycle
-Date: 2024-10-09
+Date: 2024-10-13
 Category: Data Engineering
 Slug: data-engineering-lifecycle
 Tags: Data Engineering, Data Lifecycle
